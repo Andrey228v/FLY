@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Bullets;
 using Assets.Scripts.Spawners;
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Weapons
@@ -11,31 +12,41 @@ namespace Assets.Scripts.Weapons
         [SerializeField] private float _cooldownTime;
 
         private SpawnerBullets _spawnerBullets;
-        private bool _isCooldown = true;
-        private CooldownTimer _timer;
-        private int _cooldownTimeMillisecond;
+        private WaitForSeconds _sleepTime;
 
         public event Action Coldowning;
 
         private void Awake()
         {
-            _spawnerBullets = FindFirstObjectByType<SpawnerBullets>();
-            _timer = new CooldownTimer();
-            _cooldownTimeMillisecond = Convert.ToInt32(_cooldownTime * 1000);
+            _sleepTime = new WaitForSeconds(_cooldownTime);
         }
 
-        public async void Attack(Vector3 direction, IAttack attacker)
+        private void OnDisable()
         {
-            if (_isCooldown)
-            {
-                _isCooldown = false;
-                _spawnerBullets.SpawnerType.SpawnPosition.SetPoinForSpawn(_pointCreateBullets);
-                Bullet bullet = _spawnerBullets.SpawnerType.Spawn();
-                bullet.SetAttacker(attacker);
-                bullet.transform.right = direction;
-                _isCooldown = await _timer.Start(_cooldownTimeMillisecond);
-                Coldowning?.Invoke();
-            }
+            StopCoroutine(Reload());
+        }
+
+        public void Attack(Vector3 direction, IAttacker attacker)
+        {
+            _spawnerBullets.SpawnerType.SpawnPosition.SetPoinForSpawn(_pointCreateBullets);
+
+            Bullet bullet = _spawnerBullets.SpawnerType.Spawn();
+            bullet.SetAttacker(attacker);
+ 
+            bullet.transform.right = direction;
+
+            StartCoroutine(Reload());
+        }
+
+        public void SetSpawnerBullets(SpawnerBullets spawnerBullets)
+        {
+            _spawnerBullets = spawnerBullets;
+        }
+
+        private IEnumerator Reload()
+        {
+            yield return _sleepTime;
+            Coldowning?.Invoke();
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Spawners.SpawnerType
 {
-    public class CyclingSpawnerEnemys : CyclingSpawner<Enemy>
+    public class SinglePositionEnemys : SinglePosition<Enemy>
     {
     }
 }

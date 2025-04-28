@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Assets.Scripts.Enemys
 {
     [RequireComponent(typeof(EnemyMover), typeof(EnemyAttack))]
-    public class Enemy : MonoBehaviour, ISpawnObject<Enemy>, IAttack, ITarget
+    public class Enemy : MonoBehaviour, ISpawnObject<Enemy>, IAttacker, IDead
     {
         public event Action<Enemy> DestroedSpawnObject;
 

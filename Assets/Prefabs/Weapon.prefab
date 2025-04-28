@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016802688399529327}
-  - component: {fileID: 6869036444526578584}
-  - component: {fileID: 7648047749365971694}
+  - component: {fileID: 47999623644327374}
   m_Layer: 7
   m_Name: Weapon
   m_TagString: Untagged
@@ -34,7 +33,7 @@ Transform:
   - {fileID: 8445676858835119705}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6869036444526578584
+--- !u!114 &47999623644327374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,20 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2b2cce517bd0c4083abb7b43a5905d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timer: {fileID: 7648047749365971694}
   _pointCreateBullets: {fileID: 8445676858835119705}
---- !u!114 &7648047749365971694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5082583917680233863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f22af8898eba64db4f956979f498c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _cooldownTime: 1
 --- !u!1 &7853176945820939295
 GameObject:
   m_ObjectHideFlags: 0

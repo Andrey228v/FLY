@@ -6,9 +6,9 @@ namespace Assets.Scripts
     [RequireComponent(typeof(Collider2D))]
     public class GroundDetecter : MonoBehaviour
     {
-        public bool IsCollisionWithGround { get; private set; } = false;
-
         public event Action CollisedWithGround;
+        
+        public bool IsCollisionWithGround { get; private set; } = false;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {

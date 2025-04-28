@@ -259,6 +259,7 @@ MonoBehaviour:
   _enviromentMover: {fileID: 139961505}
   _startPoint: {fileID: 719007047}
   _endPoint: {fileID: 549563638}
+  _spawnerBullets: {fileID: 1895165874}
 --- !u!4 &48014991
 Transform:
   m_ObjectHideFlags: 0
@@ -878,7 +879,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -913,7 +914,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 617665178}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c045ba12c24a0e449b2367cc83e63b4, type: 3}
   m_Name: 
@@ -2130,6 +2131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da3c4bb8a9d71645bc45ff67dbbdcf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeSpawn: 2
+  _spawnerBullets: {fileID: 1895165874}
 --- !u!114 &2035341730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2142,7 +2145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8697b82ec8652e743b72a2e28ca655e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeSpawn: 1
 --- !u!114 &2035341731
 MonoBehaviour:
   m_ObjectHideFlags: 0

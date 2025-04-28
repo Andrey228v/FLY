@@ -10,6 +10,5 @@ namespace Assets.Scripts.Bullets
         {
             transform.position += transform.right * _speed * Time.deltaTime;
         }
-
     }
 }

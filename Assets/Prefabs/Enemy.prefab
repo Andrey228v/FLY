@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5076095787532843489}
   - component: {fileID: 3582926246034139267}
   - component: {fileID: 2279357863107256471}
-  - component: {fileID: 5805821814053622000}
   - component: {fileID: 118013871810546837}
   - component: {fileID: -6046661241017196358}
   - component: {fileID: 6115202908649226957}
@@ -121,18 +120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minSpeed: 1
   _maxSpeed: 5
---- !u!114 &5805821814053622000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3394253264840712463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f22af8898eba64db4f956979f498c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &118013871810546837
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -220,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minPeriodAttack: 0.5
   _maxPeriodAttack: 2
-  _weapon: {fileID: 8146965647620664663}
+  _weapon: {fileID: 3384148564030081793}
 --- !u!114 &-2760289617115679524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,6 +272,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 6869036444526578584, guid: 0820bc8f4215c7a428fcef4b741bc862, type: 3}
+      propertyPath: _cooldownTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -295,9 +286,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4016802688399529327, guid: 0820bc8f4215c7a428fcef4b741bc862, type: 3}
   m_PrefabInstance: {fileID: 3340666344189552335}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8146965647620664663 stripped
+--- !u!114 &3384148564030081793 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6869036444526578584, guid: 0820bc8f4215c7a428fcef4b741bc862, type: 3}
+  m_CorrespondingSourceObject: {fileID: 47999623644327374, guid: 0820bc8f4215c7a428fcef4b741bc862, type: 3}
   m_PrefabInstance: {fileID: 3340666344189552335}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

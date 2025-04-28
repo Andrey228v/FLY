@@ -1,7 +1,5 @@
 ﻿using Assets.Scripts.Weapons;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Enemys
@@ -10,57 +8,44 @@ namespace Assets.Scripts.Enemys
     {
         [SerializeField] private float _minPeriodAttack = 0.5f;
         [SerializeField] private float _maxPeriodAttack = 2f;
-        [SerializeField] private Weapon _weapon;
+        [SerializeField] public Weapon _weapon;
 
-        private CooldownTimer _timer;
-        private int _periodAttackMillisecond;
-        private bool _isPeriod = true;
         private float _periodAttack;
-        private IAttack _attacker;
-
-        private CancellationTokenSource cancelTokenSource;
+        private IAttacker _attacker;
+        private WaitForSeconds _sleepTime;
 
         private void Awake()
         {
-            _attacker = GetComponent<IAttack>();
-            _timer = new CooldownTimer();
-            _periodAttack = UnityEngine.Random.Range(_minPeriodAttack, _maxPeriodAttack);
-            _periodAttackMillisecond = Convert.ToInt32(_periodAttack * 1000);
+            _attacker = GetComponent<IAttacker>();
+            _periodAttack = Random.Range(_minPeriodAttack, _maxPeriodAttack);
+            _sleepTime = new WaitForSeconds(_periodAttack);
         }
 
         private void OnEnable()
         {
-            cancelTokenSource = new CancellationTokenSource();
             _weapon.Coldowning += Action;
-            Action();
         }
 
         private void OnDisable()
         {
-            cancelTokenSource.Cancel();
             _weapon.Coldowning -= Action;
+            StopCoroutine(SetReadyState());
         }
 
-        private async void Action()
+        public void StartAttack()
         {
-            CancellationToken token = cancelTokenSource.Token;
+            _weapon.Attack(Vector3.left, _attacker);
+        }
 
-            if (_isPeriod)
-            {
-                _isPeriod = false;
+        private void Action()
+        {
+            StartCoroutine(SetReadyState());
+        }
 
-                Task<bool> task = Task.Run(()=> _timer.Start(_periodAttackMillisecond), token);
-
-                _isPeriod = await task;
-
-                if (token.IsCancellationRequested)
-                {
-                    return;
-                }
-
-                _weapon.Attack(Vector3.left, _attacker);                
-
-            }
+        private IEnumerator SetReadyState()
+        {
+            yield return _sleepTime;
+            _weapon.Attack(Vector3.left, _attacker);
         }
     }
 }

@@ -2,7 +2,7 @@ using Assets.Scripts;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(GroundDetecter))]
-public class Jump : MonoBehaviour
+public class Jumper : MonoBehaviour
 {
     [SerializeField] private float _tapForce;
     [SerializeField] private float _speed;
@@ -19,10 +19,6 @@ public class Jump : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _groundDetecter = GetComponent<GroundDetecter>();
-    }
-
-    private void Start()
-    {
         _maxRotation = Quaternion.Euler(0, 0, _maxRotationZ);
         _minRotation = Quaternion.Euler(0, 0, _minRotationZ);
     }

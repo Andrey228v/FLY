@@ -10,7 +10,7 @@ namespace Assets.Scripts.SpawnPositionType
 
         public event Action SetedPointForSpawn;
 
-        public void Start()
+        public void Awake()
         {
             _bounds = GetComponent<Collider2D>().bounds.extents;
         }
@@ -21,9 +21,7 @@ namespace Assets.Scripts.SpawnPositionType
             float y = UnityEngine.Random.Range(-_bounds.y + transform.position.y, _bounds.y + transform.position.y);
             float z = transform.position.z;
 
-            Vector3 position = new Vector3(x, y, z);
-
-            return position;
+            return new Vector3(x, y, z);
         }
 
         public void SetPoinForSpawn(Transform Point)

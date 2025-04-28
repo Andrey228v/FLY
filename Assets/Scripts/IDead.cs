@@ -1,7 +1,7 @@
 ﻿
 namespace Assets.Scripts
 {
-    public interface ITarget
+    public interface IDead
     {
         public void Despawn();
     }

@@ -6,7 +6,6 @@ namespace Assets.Scripts.UI
 {
     public class ButtonStart : MonoBehaviour, IPointerDownHandler
     {
-
         public event Action Clicked;
 
         public void OnPointerDown(PointerEventData eventData)

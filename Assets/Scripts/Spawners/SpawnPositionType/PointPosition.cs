@@ -14,9 +14,9 @@ namespace Assets.Scripts.SpawnPositionType
             return _position;
         }
 
-        public void SetPoinForSpawn(Transform Point)
+        public void SetPoinForSpawn(Transform point)
         {
-            _position = Point.position;
+            _position = point.position;
             SetedPointForSpawn?.Invoke();
         }
     }

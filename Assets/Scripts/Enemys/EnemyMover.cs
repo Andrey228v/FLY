@@ -24,6 +24,5 @@ namespace Assets.Scripts.Enemys
         {
             transform.position += _moveDirection * _speed * Time.deltaTime;                 
         }
-
     }
 }

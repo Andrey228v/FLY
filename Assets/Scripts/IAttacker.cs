@@ -1,7 +1,7 @@
 ﻿
 namespace Assets.Scripts
 {
-    public interface IAttack
+    public interface IAttacker
     {
     }
 }

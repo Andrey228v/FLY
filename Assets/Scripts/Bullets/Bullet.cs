@@ -10,7 +10,8 @@ namespace Assets.Scripts.Bullets
         [SerializeField] private float _speed;
         [SerializeField] private float _timeLife;
 
-        private IAttack _attacker;
+        private IAttacker _attacker;
+        private WaitForSeconds _sleepTime;
 
         public event Action<Bullet> DestroedSpawnObject;
 
@@ -19,6 +20,7 @@ namespace Assets.Scripts.Bullets
         private void Awake()
         {
             BulletMover = GetComponent<BulletMover>();
+            _sleepTime = new WaitForSeconds(_timeLife);
         }
 
         private void OnEnable()
@@ -28,7 +30,7 @@ namespace Assets.Scripts.Bullets
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.transform.TryGetComponent<ITarget>(out ITarget target))
+            if (collision.transform.TryGetComponent<IDead>(out IDead target))
             {
                 Type typeCollision = target.GetType();
 
@@ -47,11 +49,11 @@ namespace Assets.Scripts.Bullets
 
         private IEnumerator ExpirationTimeLife()
         {
-            yield return new WaitForSeconds(_timeLife);
+            yield return _sleepTime;
             Despawn();
         }
 
-        public void SetAttacker(IAttack attacker)
+        public void SetAttacker(IAttacker attacker)
         {
             _attacker = attacker;
         }

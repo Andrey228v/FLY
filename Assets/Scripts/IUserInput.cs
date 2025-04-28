@@ -1,6 +1,7 @@
+using System;
 
 public interface IUserInput 
 {
-    public bool Jump { get; }
-    public bool Attack { get; }
+    public event Action Jumped;
+    public event Action Attacked;
 }

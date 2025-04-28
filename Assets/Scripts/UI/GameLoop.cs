@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.Spawners;
 using Assets.Scripts.UI;
 using UnityEngine;
 
@@ -11,10 +12,11 @@ public class GameLoop : MonoBehaviour
     [SerializeField] private EnviromentMover _enviromentMover;
     [SerializeField] private Transform _startPoint;
     [SerializeField] private Transform _endPoint;
+    [SerializeField] private SpawnerBullets _spawnerBullets;
 
     private Player _player;
 
-    private void Start()
+    private void Awake()
     {
         Restart();
         _buttonStart.Clicked += Restart;
@@ -29,6 +31,7 @@ public class GameLoop : MonoBehaviour
     private void Restart()
     {
         _player = Instantiate(_playerPrefab);
+        _player.PlayerView.Weapon.SetSpawnerBullets(_spawnerBullets);
         _player.GameOver += GameOverUIActivate;
         _menuUI.gameObject.SetActive(false);
         _camerMovement.StartTracking(_player.transform);

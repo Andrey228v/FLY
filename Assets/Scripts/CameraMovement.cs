@@ -7,6 +7,17 @@ public class CameraMovement : MonoBehaviour
     private Transform _trackingObject;
     private bool _isTracking = false;
 
+    private void Update()
+    {
+        if (_isTracking)
+        {
+            Vector3 position = transform.position;
+            position.x = _trackingObject.position.x + _xOffset;
+            position.z = Constants.OffsetCameraZ;
+            transform.position = position;
+        }
+    }
+
     public void StartTracking(Transform trackingObject)
     {
         _trackingObject = trackingObject;
@@ -20,16 +31,5 @@ public class CameraMovement : MonoBehaviour
     public void StopTracking()
     {
         _isTracking = false;
-    }
-
-    private void Update()
-    {
-        if (_isTracking)
-        {
-            Vector3 position = transform.position;
-            position.x = _trackingObject.position.x + _xOffset;
-            position.z = Constants.OffsetCameraZ;
-            transform.position = position;
-        }
     }
 }
