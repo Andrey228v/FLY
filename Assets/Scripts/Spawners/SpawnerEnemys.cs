@@ -13,9 +13,11 @@ namespace Assets.Scripts.Spawners
         [SerializeField] private SpawnerBullets _spawnerBullets;
 
         private bool _isSpawn = true;
+        private WaitForSeconds _sleepTime;
 
         private void Start()
         {
+            _sleepTime = new WaitForSeconds(_timeSpawn);
             StartCoroutine(StartSpawn());
         }
 
@@ -24,10 +26,11 @@ namespace Assets.Scripts.Spawners
             while (_isSpawn)
             {
                 Enemy enemy = SpawnerType.Spawn();
-                enemy.EnemyAttack._weapon.SetSpawnerBullets(_spawnerBullets);
+                enemy.transform.position = SpawnerType.SpawnPosition.GetSpawnPosition();
+                enemy.EnemyAttack.Weapon.SetSpawnerBullets(_spawnerBullets);
                 enemy.EnemyAttack.StartAttack();
 
-                yield return new WaitForSeconds(_timeSpawn);
+                yield return _sleepTime;
             }
         }
     }

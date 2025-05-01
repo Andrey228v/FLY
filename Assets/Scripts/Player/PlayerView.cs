@@ -6,7 +6,7 @@ namespace Assets.Scripts
     public class PlayerView : MonoBehaviour
     {
         [SerializeField] private Player _player;
-        [field: SerializeField] public Weapon Weapon;
+        [field: SerializeField] public Weapon Weapon { get; private set; }
 
         private Vector3 _vectorOneXY = new Vector3(1, 1, 0);
         private Vector3 _newDir;
@@ -25,7 +25,6 @@ namespace Assets.Scripts
             _player.UserInput.Attacked -= ActivateAttack;
             Weapon.Coldowning -= SetReadyAttackState;
         }
-
 
         private void Update()
         {

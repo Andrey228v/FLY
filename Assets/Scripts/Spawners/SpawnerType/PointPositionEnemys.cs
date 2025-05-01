@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Spawners.SpawnerType
 {
-    public class SinglePositionEnemys : SinglePosition<Enemy>
+    public class PointPositionEnemys : PointSpawner<Enemy>
     {
     }
 }

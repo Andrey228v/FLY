@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minPeriodAttack: 0.5
   _maxPeriodAttack: 2
-  _weapon: {fileID: 3384148564030081793}
+  <Weapon>k__BackingField: {fileID: 3384148564030081793}
 --- !u!114 &-2760289617115679524
 MonoBehaviour:
   m_ObjectHideFlags: 0

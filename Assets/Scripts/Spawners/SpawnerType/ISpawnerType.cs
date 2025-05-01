@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.SpawnPositionType;
 using System;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.Spawners.SpawnerType
 {

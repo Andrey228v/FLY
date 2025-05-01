@@ -8,7 +8,7 @@ namespace Assets.Scripts.Enemys
     {
         [SerializeField] private float _minPeriodAttack = 0.5f;
         [SerializeField] private float _maxPeriodAttack = 2f;
-        [SerializeField] public Weapon _weapon;
+        [field: SerializeField] public Weapon Weapon { get; private set;}
 
         private float _periodAttack;
         private IAttacker _attacker;
@@ -23,18 +23,17 @@ namespace Assets.Scripts.Enemys
 
         private void OnEnable()
         {
-            _weapon.Coldowning += Action;
+            Weapon.Coldowning += Action;
         }
 
         private void OnDisable()
         {
-            _weapon.Coldowning -= Action;
-            StopCoroutine(SetReadyState());
+            Weapon.Coldowning -= Action;
         }
 
         public void StartAttack()
         {
-            _weapon.Attack(Vector3.left, _attacker);
+            Weapon.Attack(Vector3.left, _attacker);
         }
 
         private void Action()
@@ -45,7 +44,7 @@ namespace Assets.Scripts.Enemys
         private IEnumerator SetReadyState()
         {
             yield return _sleepTime;
-            _weapon.Attack(Vector3.left, _attacker);
+            Weapon.Attack(Vector3.left, _attacker);
         }
     }
 }

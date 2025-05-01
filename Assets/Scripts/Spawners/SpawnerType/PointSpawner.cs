@@ -1,11 +1,11 @@
 ﻿using Assets.Scripts.Spawners.ObjectsPools;
 using Assets.Scripts.SpawnPositionType;
 using System;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Spawners.SpawnerType
 {
+    [RequireComponent(typeof(ISpawnPosition))]
     public class PointSpawner<T> : MonoBehaviour, ISpawnerType<T> where T : Component, ISpawnObject<T>
     {
         private ObjectPoolPrefab<T> _poolFigure;
@@ -23,10 +23,6 @@ namespace Assets.Scripts.Spawners.SpawnerType
         public T Spawn()
         {
             T figure = _poolFigure.Pool.Get();
-
-            Vector3 position = SpawnPosition.GetSpawnPosition();
-
-            figure.transform.position = position;
             Spawned?.Invoke();
 
             return figure;

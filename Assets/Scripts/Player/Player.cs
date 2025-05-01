@@ -11,7 +11,6 @@ public class Player : MonoBehaviour, ISpawnObject<Player>, IAttacker, IDead
 
     public Jumper Jump { get; private set; }
     public IUserInput UserInput { get; private set; }
-    public GroundDetecter GroundDetecter { get; private set; }
     public PlayerMover PlayerMover { get; private set; }
     public PlayerView PlayerView { get; private set; }
 
@@ -19,7 +18,6 @@ public class Player : MonoBehaviour, ISpawnObject<Player>, IAttacker, IDead
     {
         Jump = GetComponent<Jumper>();
         UserInput = GetComponent<IUserInput>();
-        GroundDetecter = GetComponent<GroundDetecter>();
         PlayerMover = GetComponent<PlayerMover>();
         PlayerView = GetComponent<PlayerView>();
     }

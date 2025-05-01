@@ -4,11 +4,9 @@ using UnityEngine;
 namespace Assets.Scripts.SpawnPositionType
 {
     [RequireComponent(typeof(Collider2D))]
-    public class RandomPositionInBounds : MonoBehaviour, ISpawnPosition
+    public class RandomPositionInBounds: MonoBehaviour, ISpawnPosition
     {
         private Vector3 _bounds;
-
-        public event Action SetedPointForSpawn;
 
         public void Awake()
         {
@@ -22,11 +20,6 @@ namespace Assets.Scripts.SpawnPositionType
             float z = transform.position.z;
 
             return new Vector3(x, y, z);
-        }
-
-        public void SetPoinForSpawn(Transform Point)
-        {
-            SetedPointForSpawn?.Invoke();
         }
     }
 }

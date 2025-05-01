@@ -21,18 +21,11 @@ namespace Assets.Scripts.Weapons
             _sleepTime = new WaitForSeconds(_cooldownTime);
         }
 
-        private void OnDisable()
-        {
-            StopCoroutine(Reload());
-        }
-
         public void Attack(Vector3 direction, IAttacker attacker)
         {
-            _spawnerBullets.SpawnerType.SpawnPosition.SetPoinForSpawn(_pointCreateBullets);
-
             Bullet bullet = _spawnerBullets.SpawnerType.Spawn();
+            bullet.transform.position = _pointCreateBullets.position;
             bullet.SetAttacker(attacker);
- 
             bullet.transform.right = direction;
 
             StartCoroutine(Reload());

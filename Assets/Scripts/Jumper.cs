@@ -1,7 +1,7 @@
 using Assets.Scripts;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(GroundDetecter))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Jumper : MonoBehaviour
 {
     [SerializeField] private float _tapForce;
@@ -13,22 +13,17 @@ public class Jumper : MonoBehaviour
     private Quaternion _maxRotation;
     private Quaternion _minRotation;
     private Rigidbody2D _rigidbody;
-    private GroundDetecter _groundDetecter;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _groundDetecter = GetComponent<GroundDetecter>();
         _maxRotation = Quaternion.Euler(0, 0, _maxRotationZ);
         _minRotation = Quaternion.Euler(0, 0, _minRotationZ);
     }
 
     private void Update()
     {
-        if(_groundDetecter.IsCollisionWithGround == false)
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, _minRotation, _rotationSpeed * Time.deltaTime);
-        }
+        transform.rotation = Quaternion.Lerp(transform.rotation, _minRotation, _rotationSpeed * Time.deltaTime);
     }
 
     public void Action()
